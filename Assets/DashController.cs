@@ -20,7 +20,7 @@ public class DashController : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - gameManager.Speed);
+            transform.position = new Vector2(transform.position.x, transform.position.y - gameManager.Speed * Time.deltaTime);
         }
 
     }

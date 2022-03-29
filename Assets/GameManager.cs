@@ -17,6 +17,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpeedText.text = "Speed: " + (Speed * 400).ToString("###.0") + " MPH";
+        SpeedText.text = "Speed: " + (Speed*5).ToString("###.0") + " MPH";
     }
 }

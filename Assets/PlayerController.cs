@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     public GameManager gameManager;
 
-    float xPos = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,30 +34,20 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
-        if (Input.GetKey(KeyCode.UpArrow)) gameManager.Speed += 0.001f;
-        if (Input.GetKey(KeyCode.DownArrow)) gameManager.Speed -= 0.001f;
+        if (Input.GetKey(KeyCode.UpArrow)) gameManager.Speed += 0.1f;
+        if (Input.GetKey(KeyCode.DownArrow)) gameManager.Speed -= 0.1f;
 
         if (gameManager.Speed < 0f) gameManager.Speed = 0f;
-        if (gameManager.Speed > .5f) gameManager.Speed = .5f;
+        if (gameManager.Speed > 40f) gameManager.Speed = 40f;
 
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         //Debug.Log("X");
-        gameManager.Speed -= 0.002f;
+        gameManager.Speed -= 0.2f;
         if (gameManager.Speed < 0f) gameManager.Speed = 0f;
     }
 
-    /*
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Y");
-
-        //gameManager.Speed -= 0.01f;
-        //if (gameManager.Speed < 0f) gameManager.Speed = 0f;
-
-    }
-    */
     
 }

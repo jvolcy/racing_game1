@@ -23,28 +23,28 @@ public class npCarController : MonoBehaviour
             xPos = Random.Range(-5.0f, 5.0f);
             transform.position = new Vector2(xPos, 7f);
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            Speed = 0.1f;
+            Speed = 10f;
         }
         else if (transform.position.y > 7f)
         {
             xPos = Random.Range(-5.0f, 5.0f);
             transform.position = new Vector2(xPos, -7f);
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            Speed = 0.1f;
+            Speed = 10f;
         }
         else
         {
-            transform.position = new Vector3(xPos, transform.position.y + Speed - gameManager.Speed);
+            transform.Translate(Vector3.up * (Speed - gameManager.Speed) * Time.deltaTime);
+            //transform.position = new Vector3(xPos, transform.position.y + (Speed - gameManager.Speed)*Time.deltaTime);
         }
 
     }
 
 
-
     private void OnCollisionStay2D(Collision2D collision)
     {
         //Debug.Log("X");
-        Speed -= 0.002f;
+        Speed -= 0.2f;
         if (Speed < 0f) Speed = 0f;
     }
 
