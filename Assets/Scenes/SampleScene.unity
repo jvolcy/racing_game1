@@ -1439,6 +1439,7 @@ GameObject:
   - component: {fileID: 1585935286}
   - component: {fileID: 1585935285}
   - component: {fileID: 1585935287}
+  - component: {fileID: 1585935288}
   m_Layer: 0
   m_Name: oil
   m_TagString: Untagged
@@ -1526,6 +1527,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   YRange: 50
   gameManager: {fileID: 2135572754}
+--- !u!70 &1585935288
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585935284}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.018299975, y: -0.04025585}
+  m_Size: {x: 3.2985668, y: 0.37009478}
+  m_Direction: 1
 --- !u!1 &1618620469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,6 +1730,7 @@ GameObject:
   - component: {fileID: 1843023160}
   - component: {fileID: 1843023159}
   - component: {fileID: 1843023161}
+  - component: {fileID: 1843023162}
   m_Layer: 0
   m_Name: pothole
   m_TagString: Untagged
@@ -1780,7 +1798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843023158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.0694122, y: 7.02, z: 0}
+  m_LocalPosition: {x: -0.76, y: 7.02, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1800,6 +1818,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   YRange: 50
   gameManager: {fileID: 2135572754}
+--- !u!58 &1843023162
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843023158}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.037523508, y: -0.10631573}
+  serializedVersion: 2
+  m_Radius: 0.57834196
 --- !u!1 &2019691717
 GameObject:
   m_ObjectHideFlags: 0

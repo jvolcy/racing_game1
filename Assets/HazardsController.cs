@@ -29,10 +29,46 @@ public class HazardsController : MonoBehaviour
 
     }
 
-
     void ResetHazardPosition()
     {
         XPos = Random.Range(-5f, 5f);
         transform.position = new Vector2(XPos, Random.Range(7f, YRange));
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (gameObject.name == "pothole")
+        {
+            //Debug.Log("pothole");
+            gameManager.Speed -= 0.4f;
+            if (gameManager.Speed < 0f) gameManager.Speed = 0f;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        //Debug.Log(collision.gameObject.name)
+
+        if (gameObject.name == "oil")
+        {
+            //Debug.Log("oil");
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            rb.AddForce(gameManager.Speed * Random.Range(-5000f, 5000f) * Vector2.right);
+            //rb.AddForce(1000000f * Vector2.right);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (gameObject.name == "oil")
+        {
+            //Debug.Log("oil");
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+
+            //rb.AddForce(1000000f * Vector2.right);
+        }
+
     }
 }
