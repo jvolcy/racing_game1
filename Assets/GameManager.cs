@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public float Score = 0f;
 
+    float TotalScore = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +30,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameOver)
+            TotalScore = Score - 25 * Time.timeSinceLevelLoad;
+
         SpeedText.text = "Speed: " + (Speed * 5).ToString("###") + " MPH";
-        ScoreText.text = "Score: " + ((int)Score).ToString("#####");
+        ScoreText.text = "Score: " + ((int)TotalScore).ToString("#####");
         PercentText.text = (int)(100f - FinishLine.transform.position.y / 10) + "% ";
     }
 
