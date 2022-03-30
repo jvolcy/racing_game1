@@ -5,16 +5,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameManager gameManager;
+    AudioSource audioSource;
+    public AudioClip CrashClip;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.GameOver) return;
+
         float dX = 0f;
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -34,20 +38,25 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
-        if (Input.GetKey(KeyCode.UpArrow)) gameManager.Speed += 0.1f;
-        if (Input.GetKey(KeyCode.DownArrow)) gameManager.Speed -= 0.1f;
-
-        if (gameManager.Speed < 0f) gameManager.Speed = 0f;
-        if (gameManager.Speed > 40f) gameManager.Speed = 40f;
+        if (Input.GetKey(KeyCode.UpArrow)) gameManager.IncreaseSpeed(0.1f);
+        if (Input.GetKey(KeyCode.DownArrow)) gameManager.IncreaseSpeed(-0.1f);
 
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         //Debug.Log("X");
-        gameManager.Speed -= 0.2f;
-        if (gameManager.Speed < 0f) gameManager.Speed = 0f;
+        gameManager.IncreaseSpeed(-0.2f);
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "npCar")
+        {
+            audioSource.clip = CrashClip;
+            audioSource.Play();
+            gameManager.Score -= 100f;
+        }
+    }
+
 }

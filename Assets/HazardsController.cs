@@ -6,6 +6,10 @@ public class HazardsController : MonoBehaviour
 {
     public float YRange = 50f;
     public GameManager gameManager;
+    public AudioClip PotHoleClip;
+    public AudioClip OilSlickClip;
+
+    AudioSource audioSource;
 
     float XPos;
 
@@ -13,6 +17,7 @@ public class HazardsController : MonoBehaviour
     void Start()
     {
         ResetHazardPosition();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,12 +45,21 @@ public class HazardsController : MonoBehaviour
         if (gameObject.name == "pothole")
         {
             //Debug.Log("pothole");
-            gameManager.Speed -= 0.4f;
-            if (gameManager.Speed < 0f) gameManager.Speed = 0f;
+            gameManager.IncreaseSpeed(-0.4f);
+            gameManager.Score -= 50f;
+
+            audioSource.clip = PotHoleClip;
+            audioSource.Play();
+        }
+
+        if (gameObject.name == "oil")
+        {
+            audioSource.clip = OilSlickClip;
+            audioSource.Play();
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+        private void OnTriggerStay2D(Collider2D collision)
     {
         //Debug.Log(collision.gameObject.name)
 
